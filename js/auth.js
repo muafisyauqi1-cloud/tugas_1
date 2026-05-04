@@ -53,13 +53,6 @@ if (resetBtn) {
   };
 }
 
-
-    } else {
-      alert("Harap isi semua field!");
-    }
-  };
-}
-
 // Klik di luar modal untuk menutup
 window.onclick = function (event) {
   if (event.target.classList.contains("modal")) {

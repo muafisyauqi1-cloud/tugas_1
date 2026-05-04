@@ -1,6 +1,6 @@
 // ========== STOK.JS - VERSI DIPERBAIKI ==========
 
-// Header user
+// Ambil data user dari localStorage
 const user = JSON.parse(localStorage.getItem("loggedUser"));
 if (user && document.getElementById("headerUserName")) {
   document.getElementById("headerUserName").innerHTML = user.nama;
@@ -18,16 +18,22 @@ function renderStok() {
 
   if (dataBahanAjar.length === 0) {
     tbody.innerHTML =
-      '<tr><td colspan="7" style="text-align:center;">Belum ada data bahan ajar</td></tr>';
+      '<tr><td colspan="8" style="text-align:center;">Belum ada data bahan ajar</td></tr>';
     return;
   }
 
   tbody.innerHTML = dataBahanAjar
     .map(
-      (item, idx) => `
+      (item, idx) => {
+        const coverCell = item.cover
+          ? `<img class="cover-thumb" src="${item.cover}" alt="${item.namaBarang}" />`
+          : '<span class="no-cover">-</span>';
+
+        return `
         <tr>
             <td>${item.kodeLokasi}</td>
             <td><strong>${item.kodeBarang}</strong></td>
+            <td class="cover-cell">${coverCell}</td>
             <td>${item.namaBarang}</td>
             <td><span class="status-badge" style="background:#eef2ff; color:#0f3b5f;">${item.jenisBarang}</span></td>
             <td>Edisi ${item.edisi}</td>
@@ -37,7 +43,8 @@ function renderStok() {
                 <button onclick="hapusBaris(${idx})" class="btn-danger-small"><i class="fas fa-trash"></i> Hapus</button>
             </td>
         </tr>
-    `,
+    `;
+      },
     )
     .join("");
 }
@@ -54,6 +61,15 @@ window.viewDetail = (idx) => {
   document.getElementById("detailJenisBarang").innerText = item.jenisBarang;
   document.getElementById("detailEdisi").innerText = `Edisi ${item.edisi}`;
   document.getElementById("detailStok").innerHTML = `${item.stok} pcs`;
+
+  const detailCoverImage = document.getElementById("detailCoverImage");
+  if (item.cover) {
+    detailCoverImage.src = item.cover;
+    detailCoverImage.style.display = "block";
+  } else {
+    detailCoverImage.src = "";
+    detailCoverImage.style.display = "none";
+  }
 
   // Status stok dengan warna
   let statusText = "";
