@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tracking Pengiriman - SITTA</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <i class="fas fa-graduation-cap"></i><span>SITTA</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item"
+            ><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a
+          >
+          <a href="stok.html" class="nav-item"
+            ><i class="fas fa-boxes"></i><span>Informasi Bahan Ajar</span></a
+          >
+          <a href="tracking.html" class="nav-item active"
+            ><i class="fas fa-truck"></i><span>Tracking Pengiriman</span></a
+          >
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-toggle">
+              <i class="fas fa-chart-line"></i><span>Laporan</span
+              ><i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="nav-dropdown-menu">
+              <a href="#" class="dropdown-item">Monitoring Progress DO</a
+              ><a href="#" class="dropdown-item">Rekap Bahan Ajar</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item"
+            ><i class="fas fa-history"></i><span>Histori Transaksi</span></a
+          >
+          <a href="index.html" class="nav-item logout-btn"
+            ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+          >
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <div class="greeting">
+            <i class="fas fa-search"></i><span>Tracking Pengiriman</span>
+          </div>
+          <div class="user-info">
+            <i class="fas fa-user-circle"></i
+            ><span id="headerUserName">User</span>
+          </div>
+        </header>
+
+        <div class="content-area">
+          <div class="tracking-card">
+            <h2><i class="fas fa-truck"></i> Lacak Pengiriman</h2>
+            <p class="tracking-desc">
+              Masukkan Nomor Delivery Order (DO) atau klik salah satu DO di
+              tabel bawah untuk melacak status pengiriman
+            </p>
+
+            <div class="search-box">
+              <input
+                type="text"
+                id="doNumber"
+                placeholder="Contoh: 2023001234 atau 2023005678"
+                class="search-input"
+              />
+              <button id="cariBtn" class="btn-cari">
+                <i class="fas fa-search"></i> Cari
+              </button>
+            </div>
+
+            <!-- ========== TABEL DAFTAR DELIVERY ORDER ========== -->
+            <div class="do-list-section">
+              <h3><i class="fas fa-list"></i> Daftar Delivery Order</h3>
+              <p class="section-desc">
+                Klik pada baris untuk melihat detail pengiriman
+              </p>
+              <div class="table-responsive">
+                <table class="data-table do-table" id="doTable">
+                  <thead>
+                    <tr>
+                      <th>Nomor DO</th>
+                      <th>Penerima</th>
+                      <th>Status</th>
+                      <th>Ekspedisi</th>
+                      <th>Tanggal Kirim</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="doTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Hasil Pencarian Detail -->
+            <div id="trackingResult" style="display: none">
+              <div class="result-card">
+                <h3><i class="fas fa-info-circle"></i> Detail Pengiriman</h3>
+                <div class="info-grid">
+                  <div class="info-row">
+                    <strong>Nomor DO:</strong>
+                    <span id="nomorDO"></span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Nama Mahasiswa:</strong>
+                    <span id="namaMahasiswa"></span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Status Pengiriman:</strong>
+                    <div>
+                      <span class="status-badge" id="statusBadge"></span>
+                      <div class="progress-container">
+                        <div
+                          class="progress-bar"
+                          id="progressBar"
+                          style="width: 0%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="info-row">
+                    <strong>Ekspedisi:</strong>
+                    <span id="ekspedisi"></span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Tanggal Kirim:</strong>
+                    <span id="tanggalKirim"></span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Jenis Paket:</strong>
+                    <span id="jenisPaket"></span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Kode Paket:</strong>
+                    <span id="kodePaket"></span>
+                  </div>
+                  <div class="info-row">
+                    <strong>Total Pembayaran:</strong>
+                    <span class="total-amount" id="totalBayar"></span>
+                  </div>
+                </div>
+
+                <h4><i class="fas fa-history"></i> Riwayat Perjalanan</h4>
+                <div class="timeline" id="timeline"></div>
+              </div>
+            </div>
+
+            <div id="notFound" class="alert-danger" style="display: none">
+              <i class="fas fa-exclamation-triangle"></i>
+              <strong>Nomor Delivery Order tidak ditemukan!</strong><br />
+              Silakan pilih nomor DO dari tabel di atas atau coba nomor yang
+              lain.
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/tracking.js"></script>
+  </body>
+</html>

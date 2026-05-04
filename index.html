@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SITTA Bahan Ajar UT</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body class="login-body">
+    <div class="login-container">
+      <div class="login-card">
+        <div class="logo-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h1>SITTA</h1>
+        <p>Sistem Informasi Bahan Ajar<br />Universitas Terbuka</p>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn-login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <a href="#" id="lupaPasswordBtn">Lupa Password?</a>
+          <span>|</span>
+          <a href="#" id="daftarBtn">Daftar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Lupa Password -->
+    <div id="lupaModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-key"></i> Lupa Password</h3>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p>Masukkan email Anda untuk reset password</p>
+          <input
+            type="email"
+            id="resetEmail"
+            placeholder="Email"
+            class="modal-input"
+          />
+          <button id="resetBtn" class="btn-modal">Kirim Link Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Daftar -->
+    <div id="daftarModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-user-plus"></i> Daftar Akun Baru</h3>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <input
+            type="text"
+            id="regNama"
+            placeholder="Nama Lengkap"
+            class="modal-input"
+          />
+          <input
+            type="email"
+            id="regEmail"
+            placeholder="Email"
+            class="modal-input"
+          />
+          <input
+            type="password"
+            id="regPassword"
+            placeholder="Password"
+            class="modal-input"
+          />
+          <select id="regRole" class="modal-input">
+            <option value="UPBJJ-UT">UPBJJ-UT</option>
+            <option value="Mahasiswa">Mahasiswa</option>
+            <option value="Fakultas">Fakultas</option>
+          </select>
+          <button id="registerBtn" class="btn-modal">Daftar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

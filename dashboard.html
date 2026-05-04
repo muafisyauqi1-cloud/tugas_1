@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - SITTA Bahan Ajar UT</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>SITTA</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="stok.html" class="nav-item">
+            <i class="fas fa-boxes"></i>
+            <span>Informasi Bahan Ajar</span>
+          </a>
+          <a href="tracking.html" class="nav-item">
+            <i class="fas fa-truck"></i>
+            <span>Tracking Pengiriman</span>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-toggle">
+              <i class="fas fa-chart-line"></i>
+              <span>Laporan</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="nav-dropdown-menu">
+              <a href="#" class="dropdown-item">Monitoring Progress DO</a>
+              <a href="#" class="dropdown-item">Rekap Bahan Ajar</a>
+            </div>
+          </div>
+          <a href="#" class="nav-item">
+            <i class="fas fa-history"></i>
+            <span>Histori Transaksi</span>
+          </a>
+          <a href="index.html" class="nav-item logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="top-bar">
+          <div class="greeting" id="greetingMessage">
+            <i class="fas fa-sun"></i>
+            <span>Memuat...</span>
+          </div>
+          <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <div>
+              <span id="userNameDisplay">User</span>
+              <span class="user-role" id="userRoleDisplay"></span>
+            </div>
+          </div>
+        </header>
+
+        <div class="content-area">
+          <div class="welcome-card">
+            <h2>Selamat Datang di SITTA</h2>
+            <p>
+              Sistem pemesanan dan distribusi bahan ajar Universitas Terbuka
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <i class="fas fa-book"></i>
+              <div class="stat-info">
+                <h3>Total Bahan Ajar</h3>
+                <p class="stat-number" id="totalBahanAjar">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="stat-info">
+                <h3>Total Lokasi</h3>
+                <p class="stat-number" id="totalLokasi">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-users"></i>
+              <div class="stat-info">
+                <h3>Total Pengguna</h3>
+                <p class="stat-number" id="totalPengguna">0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-orders">
+            <h3><i class="fas fa-box"></i> Daftar Bahan Ajar</h3>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Jenis</th>
+                    <th>Stok</th>
+                    <th>Lokasi</th>
+                  </tr>
+                </thead>
+                <tbody id="recentOrdersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
