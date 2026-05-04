@@ -23,15 +23,10 @@ if (loginForm) {
 
 // Modal handlers
 const lupaBtn = document.getElementById("lupaPasswordBtn");
-const daftarBtn = document.getElementById("daftarBtn");
 
 if (lupaBtn) {
   lupaBtn.onclick = () =>
     (document.getElementById("lupaModal").style.display = "flex");
-}
-if (daftarBtn) {
-  daftarBtn.onclick = () =>
-    (document.getElementById("daftarModal").style.display = "flex");
 }
 
 // Close modal
@@ -58,26 +53,7 @@ if (resetBtn) {
   };
 }
 
-// Register
-const registerBtn = document.getElementById("registerBtn");
-if (registerBtn) {
-  registerBtn.onclick = () => {
-    const newUser = {
-      id: dataPengguna.length + 1,
-      nama: document.getElementById("regNama").value,
-      email: document.getElementById("regEmail").value,
-      password: document.getElementById("regPassword").value,
-      role: document.getElementById("regRole").value,
-      lokasi: "Terdaftar",
-    };
 
-    if (newUser.nama && newUser.email && newUser.password) {
-      dataPengguna.push(newUser);
-      alert("Pendaftaran berhasil! Silakan login.");
-      document.getElementById("daftarModal").style.display = "none";
-      document.getElementById("regNama").value = "";
-      document.getElementById("regEmail").value = "";
-      document.getElementById("regPassword").value = "";
     } else {
       alert("Harap isi semua field!");
     }
